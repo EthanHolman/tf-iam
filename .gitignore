@@ -1,0 +1,14 @@
+# terraform 
+*.tfstate
+*.tfstate.*
+.terraform/
+.terragrunt-cache/
+backend.tf
+*.tfvars
+*.tfvars.json
+
+# Keys
+*.pem
+
+# other
+.local_env
