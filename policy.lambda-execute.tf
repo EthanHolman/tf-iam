@@ -15,11 +15,6 @@ resource "aws_iam_policy" "lambda_execute_policy" {
       },
       {
         "Effect" : "Allow",
-        "Action" : "logs:CreateLogGroup",
-        "Resource" : "arn:aws:logs:us-west-2:${var.aws_acct_number}:*-${var.apps_prefix}-*"
-      },
-      {
-        "Effect" : "Allow",
         "Action" : [
           "logs:CreateLogStream",
           "logs:PutLogEvents"
