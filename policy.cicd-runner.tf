@@ -94,7 +94,13 @@ resource "aws_iam_policy" "cicd_runner_policy" {
           "lambda:UntagResource",
           "lambda:AddPermission",
           "lambda:RemovePermission",
-          "lambda:GetPolicy"
+          "lambda:GetPolicy",
+          "lambda:ListLayers",
+          "lambda:ListLayerVersions",
+          "lambda:GetLayerVersion",
+          "lambda:PublishLayerVersion",
+          "lambda:DeleteLayerVersion",
+          "lambda:AddLayer"
         ],
         "Resource" : "arn:aws:lambda:*:*:*-app-*"
       },
@@ -125,12 +131,12 @@ resource "aws_iam_policy" "cicd_runner_policy" {
         "Resource" : "arn:aws:logs:us-west-2:${var.aws_acct_number}:*-${var.apps_prefix}-*"
       },
       {
-        "Sid": "AppApiGateway",
-        "Effect": "Allow",
-        "Action": [
+        "Sid" : "AppApiGateway",
+        "Effect" : "Allow",
+        "Action" : [
           "apigateway:*"
         ],
-        "Resource": "arn:aws:apigateway:us-west-2::*"
+        "Resource" : "arn:aws:apigateway:us-west-2::*"
       },
       {
         "Sid" : "AppAllowPassRole",
@@ -143,7 +149,8 @@ resource "aws_iam_policy" "cicd_runner_policy" {
           "StringLike" : {
             "iam:PassedToService" : [
               "ec2.amazonaws.com",
-              "lambda.amazonaws.com"
+              "lambda.amazonaws.com",
+              "apigateway.amazonaws.com"
             ]
           }
         }

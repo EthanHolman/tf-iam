@@ -4,8 +4,8 @@ resource "aws_iam_policy" "lambda_execute_policy" {
   description = "Permissions given to lambda functions during execution"
 
   policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
         "Action" = [
           "ec2:Describe*",
